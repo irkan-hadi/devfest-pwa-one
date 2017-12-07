@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<!-- Developed by Irkan Hadi for GDG DevFest Muscat 2017 PWA workshop-->
+<html>
+<head>
+    <title>pwa-code-1
+    </title>
+    <!-- Requirment for PWA and "Add to Homescreen" feature, link the manifest file that includes pointers to the icons and other properties of your PWA -->
+    <link rel="manifest" href="manifest.json">
+
+       <!-- Important tags to qualify for PWA -->
+    <meta name="theme-color" content="#00acdc" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- include the simple service worker, the beating heart of PWA -->
+    <script src="sw.js"></script>
+
+
+    <script>
+        //Check if browser supports service worker, not all of them do at the moment
+        if ('serviceWorker' in navigator) {
+            //Register the service worker in the browser
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js').then(function (registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function (err) {
+                    // registration failed :/
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <div style="text-align: center">
+        <h1>GDG DevFest Muscat 2017</h1>
+        <p>Hello World of DevFest Muscat 2017</p>
+        <img src="devfest_logo.png"  />
+    </div>
+
+</body>
+</html>
